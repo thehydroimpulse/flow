@@ -1,0 +1,10 @@
+[package]
+name = "test-flow"
+version = "0.1.0"
+authors = ["Daniel Fagnan <dnfagnan@gmail.com>"]
+
+[dependencies]
+tangle = "*"
+
+[dependencies.flow]
+path = "../"

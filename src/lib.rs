@@ -143,6 +143,17 @@ impl<'a, 'x> Flow<'a, 'x> {
         }
 
         let expr = self.inner.parse_expr().unwrap();
+        match &expr.node {
+            &ast::ExprKind::Call(ref expr, ref args) => {
+                match &args[0].node {
+                    &ast::ExprKind::Path(ref q, ref path) => {
+                        println!("Expr: {:?}", path.segments[0].identifier);
+                    },
+                    _ => {}
+                }
+            },
+            _ => {}
+        }
         let ident = self.get_ident_from_pat(pat);
 
         Some(Block::Async(ident, expr))
